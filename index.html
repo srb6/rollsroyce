@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Rolls-Royce Motor Cars - Ultimate global symbol of automotive luxury and handcrafted British excellence.">
+    <meta name="keywords" content="Rolls-Royce, luxury cars, automotive, Phantom, Ghost, Dawn, Cullinan">
+    <meta name="author" content="Rolls-Royce Motor Cars">
+    <meta property="og:title" content="Rolls-Royce Motor Cars - Luxury Automotive Excellence">
+    <meta property="og:description" content="Experience the pinnacle of automotive luxury with Rolls-Royce.">
+    <meta property="og:type" content="website">
+    <title>Rolls Royce - Luxury Automotive Excellence</title>
+    <link rel="stylesheet" href="style/common.css">
+    <link rel="stylesheet" href="style/index.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="icon" href="logo.jpg" type="image/favicon">
+</head>
+<style>
+       html::-webkit-scrollbar {
+            display: none;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            padding: 0px;
+            margin: 0px;
+            width: 100vw;
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            scroll-behavior: smooth;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        section {
+            width: 100vw;
+            height: 100vh;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            padding: 20px 0;
+            background-color: black;
+            color: white;
+            align-items: center;
+            box-sizing: border-box;
+            z-index: 1000;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        body.dark-mode .nav {
+            background-color: #0a0a0a;
+        }
+
+        body.dark-mode .nav-menu a {
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .hamburger span {
+            background-color: #e0e0e0;
+        }
+
+        .nav-name {
+            width: 40%;
+            margin-left: 40px;
+        }
+
+        .nav-name h2 {
+            margin: 0;
+            font-size: large;
+        }
+
+        .nav-menu {
+            display: flex;
+            width: 60%;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            color: inherit;
+            text-decoration: none;
+            padding-bottom: 6px;
+            border-bottom: 2px solid transparent;
+            font-size: 16px;
+            transition: color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .nav-menu a:hover {
+            color: #ffffff;
+            border-bottom: 2px solid white;
+            transform: scale(1.1);
+        }
+
+        /* FIX: Removed the broken `.nav-menu a:` snippet that was hanging here */
+
+        .home {
+            /* FIX: Changed margin to padding-top so 100vh remains a perfect fullscreen layout */
+            padding-top: 0;
+            position: relative;
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+            overflow: hidden;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .video-section {
+            /* FIX: Set both dimensions to 100% relative to the parent container */
+            width: 100%;
+            height: 100%;
+            align-content: stretch;
+            object-fit: fill;
+            /* Change to 'contain' if you prefer black bar letterboxes over cropping */
+            display: block;
+        }
+
+        .video-section video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Container that sits perfectly on top of the video framework */
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 40%, rgba(0, 0, 0, 0) 100%);
+            display: flex;
+            align-items: center;
+            pointer-events: none;
+        }
+
+        /* Box housing your paragraph rules */
+        .hero-content {
+            max-width: 400px;
+            margin-left: 60px;
+            pointer-events: auto;
+        }
+
+        .hero-content p {
+            color: #ffffff;
+            font-size: 18px;
+            line-height: 1.6;
+            letter-spacing: 1px;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+        }
+
+        #product {
+            width: 100%;
+            height: 100vh;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+            gap: 10px;
+            box-sizing: border-box;
+            margin-top: 0;
+        }
+
+        .card {
+            background-color: white;
+            box-shadow: 0px 12px 10px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            width: 100%;
+            max-width: 350px;
+            height: auto;
+            padding-bottom: 20px;
+            overflow: hidden;
+            justify-content: space-evenly;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0px 20px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .card img {
+            display: block;
+            box-sizing: border-box;
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card h3 {
+            text-align: center;
+            margin: 15px 10px 10px 10px;
+        }
+
+        .card p {
+            text-align: justify;
+            margin: 20px;
+        }
+
+        .card a {
+            text-align: end;
+            margin: 20px;
+            text-decoration: none;
+            color: inherit;
+            border-bottom: 2px solid transparent;
+            transition: color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, font-size 0.2s ease;
+        }
+
+        .card a:hover {
+            border-bottom: 2px solid black;
+            border-width: 1px;
+            text-decoration: none;
+            font-size: large;
+            color: inherit;
+            transform: scale(1.1);
+        }
+        #about {
+            width: 100%;
+            height: 100vh;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+            box-sizing: border-box;
+            gap: 50px;
+            padding: 40px;
+        }
+        #about h2 {
+            margin-bottom: 20px;
+            margin-top: 0;
+        }
+        #about img {
+            max-width: 300px;
+            width: 40%;
+            height: 100%;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+        #about p {
+            width: 100%;
+            text-align: justify;
+            line-height: 1.6;
+            margin: 0;
+        }
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            width: 60%;
+            height: 100%;
+            padding-right: 40px;
+        }
+        #contact {
+            width: 100%;
+            height: 100vh;
+            background-color: #e0e0e0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            box-sizing: border-box;
+            padding: 40px 20px;
+        }
+        #contact h2 {
+            margin: 0 0 30px 0;
+            font-size: 32px;
+            color: #333;
+        }
+        #contact > p {
+            margin-bottom: 30px;
+            color: #666;
+            font-size: 16px;
+        }
+        #contact form {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 500px;
+            gap: 15px;
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        #contact input, #contact textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            font-family: inherit;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        #contact input:focus, #contact textarea:focus {
+            outline: none;
+            border-color: #000;
+            box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
+        }
+        #contact textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        #contact button {
+            padding: 15px;
+            background-color: black;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        #contact button:hover {
+            background-color: #333;
+            transform: scale(1.02);
+        }
+        #contact button:active {
+            transform: scale(0.98);
+        }
+        #contact form p {
+            margin: 0;
+        }
+        footer {
+            width: 100%;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            text-align: center;
+            padding: 30px 20px;
+            box-sizing: border-box;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        footer p {
+            margin: 5px 0;
+        }
+        footer a {
+            color: #ffffff;
+            text-decoration: none;
+            border-bottom: 1px solid #ffffff;
+            transition: color 0.3s ease;
+        }
+        footer a:hover {
+            color: #ccc;
+        }
+
+        /* ====== RESPONSIVE DESIGN & MOBILE ====== */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            margin-right: 20px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        /* ====== SCROLL ANIMATIONS ====== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+
+        /* ====== BACK TO TOP BUTTON ====== */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: #000;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+            transition: all 0.3s ease;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .back-to-top.show {
+            display: flex;
+        }
+
+        .back-to-top:hover {
+            background-color: #333;
+            transform: scale(1.1);
+        }
+
+        /* ====== FORM LOADING ANIMATION ====== */
+        .form-loading {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #000;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        #contact form.submitting button {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        /* ====== DARK MODE ====== */
+        body.dark-mode {
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+        }
+
+        body.dark-mode #product {
+            background-color: #2a2a2a;
+        }
+
+        body.dark-mode #about {
+            background-color: #1f1f1f;
+        }
+
+        body.dark-mode #contact {
+            background-color: #232323;
+        }
+
+        body.dark-mode .card {
+            background-color: #2a2a2a;
+            color: #e0e0e0;
+        }
+
+        body.dark-mode #contact form {
+            background-color: #2a2a2a;
+            color: #e0e0e0;
+        }
+
+        body.dark-mode #contact input,
+        body.dark-mode #contact textarea {
+            background-color: #3a3a3a;
+            color: #e0e0e0;
+            border-color: #555;
+        }
+
+        body.dark-mode #contact h2,
+        body.dark-mode #about h2 {
+            color: #e0e0e0;
+        }
+
+
+
+        /* ====== TESTIMONIALS SECTION ====== */
+        #testimonials {
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(135deg, #1a1a1a 0%, #333 100%);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+            box-sizing: border-box;
+        }
+
+        #testimonials h2 {
+            font-size: 36px;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        .testimonials-container {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            max-width: 1200px;
+        }
+
+        .testimonial-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-left: 4px solid gold;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 350px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 10px 30px rgba(255, 255, 255, 0.2);
+        }
+
+        .testimonial-text {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            font-size: 14px;
+            color: gold;
+        }
+
+        .testimonial-stars {
+            color: gold;
+            margin-bottom: 10px;
+        }
+
+        /* ====== SOCIAL MEDIA LINKS ====== */
+        .social-links {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .social-links a {
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .social-links a:hover {
+            background-color: white;
+            color: #1a1a1a;
+            transform: scale(1.2);
+        }
+
+        /* ====== MEDIA QUERIES - RESPONSIVE DESIGN ====== */
+        @media (max-width: 768px) {
+            html {
+                scroll-padding-top: 70px;
+            }
+
+            body {
+                width: 100%;
+                overflow-x: hidden;
+            }
+
+            section {
+                width: 100%;
+                height: auto;
+                min-height: 100vh;
+                flex-direction: column;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .nav {
+                padding: 15px 20px;
+            }
+
+            .nav-name {
+                width: 50%;
+                margin-left: 0;
+            }
+
+            .nav-name h2 {
+                font-size: medium;
+            }
+
+            .nav-menu {
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: #000;
+                flex-direction: column;
+                gap: 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+            }
+
+            .nav-menu.active {
+                max-height: 200px;
+                padding: 20px 0;
+            }
+
+            .nav-menu a {
+                display: block;
+                padding: 15px 20px;
+                width: 100%;
+            }
+
+            .home {
+                padding-top: 0;
+                height: auto;
+                min-height: 100vh;
+            }
+
+            #product {
+                flex-direction: column;
+                height: auto;
+                min-height: 100vh;
+                gap: 20px;
+                padding: 100px 20px 20px;
+            }
+
+            .card {
+                max-width: 90%;
+                width: 100%;
+            }
+
+            #about {
+                flex-direction: column;
+                height: auto;
+                min-height: 100vh;
+                gap: 30px;
+                padding: 100px 20px 20px;
+            }
+
+            #about img {
+                width: 100%;
+                max-width: 250px;
+                height: 250px;
+            }
+
+            .about-content {
+                width: 100%;
+                padding-right: 0;
+            }
+
+            #contact {
+                height: auto;
+                min-height: 100vh;
+                padding: 100px 20px 20px;
+            }
+
+            #contact form {
+                max-width: 100%;
+                padding: 30px 20px;
+            }
+
+            .hero-content {
+                max-width: 100%;
+                margin-left: 20px;
+                margin-right: 20px;
+            }
+
+            .hero-content p {
+                font-size: 16px;
+            }
+
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+            }
+
+            #testimonials {
+                height: auto;
+                min-height: 100vh;
+                padding: 100px 20px;
+            }
+
+            .testimonials-container {
+                flex-direction: column;
+            }
+
+            .testimonial-card {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-name {
+                width: 100%;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+
+            #product {
+                padding: 80px 10px 10px;
+            }
+
+            .card {
+                max-width: 100%;
+                margin: 0 auto;
+            }
+
+            #about {
+                padding: 80px 10px 10px;
+            }
+
+            #contact {
+                padding: 80px 10px 10px;
+            }
+
+            #contact form {
+                max-width: 100%;
+                padding: 20px;
+                gap: 12px;
+            }
+
+            #testimonials h2 {
+                font-size: 24px;
+            }
+
+            .testimonial-card {
+                padding: 20px;
+            }
+        }
+    </style>
+ 
+
+<body>
+
+    <div class="nav">
+        <div class="nav-name">
+            <h2>ROLLS ROYCE</h2>
+        </div>
+        <div class="nav-menu">
+            <a href="#home">HOME</a>
+            <a href="#product">PRODUCT</a>
+            <a href="#about">ABOUT</a>
+            <a href="#testimonials">TESTIMONIALS</a>
+            <a href="#contact">CONTACT</a>
+        </div>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <section id="home">
+        <div class="home">
+            <div class="video-section">
+                <video autoplay muted loop playsinline poster="logo.jpg">
+                    <source src="10809162-hd_1920_1080_25fps.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="video-overlay">
+                <div class="hero-content">
+                    <p>Crafting timeless luxury and unmatched precision. Every detail engineered to perfection, defining
+                        the ultimate standard of automotive elegance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="product">
+        <div class="card fade-in">
+            <img src="card4.jpg" alt="Rolls-Royce Phantom" loading="lazy">
+            <h3>Rolls-Royce Phantom (Grey & Black)</h3>
+            <p>
+                This commanding front view highlights the imposing architecture of the flagship Phantom. The design is
+                dominated by the massive, stainless-steel "Pantheon" grille and the iconic Spirit of Ecstasy hood
+                ornament. The darker two-tone styling gives this particular Phantom a much more modern, stealthy, and
+                aggressive aesthetic compared to the traditional, brighter finishes.
+            </p>
+            <a href="phantom.html">Learn More</a>
+        </div>
+        <div class="card fade-in">
+            <img src="card3.jpg" alt="Rolls-Royce Dawn" loading="lazy">
+            <h3>Rolls-Royce Dawn (Gold)</h3>
+            <p>
+                The Dawn is an ultra-luxury convertible grand tourer built to offer an effortless open-air driving
+                experience. Despite being a convertible, it is heavily engineered to maintain the whisper-quiet cabin
+                Rolls-Royce is known for when the fabric roof is up. The striking gold wrap on this specific model
+                emphasizes the Dawn's reputation as a glamorous, attention-grabbing statement car.
+            </p>
+            <a href="dawn.html">Learn More</a>
+        </div>
+        <div class="card fade-in">
+            <img src="card2.jpg" alt="Rolls-Royce Phantom" loading="lazy">
+            <h3>Rolls-Royce Phantom (Turquoise & White)</h3>
+            <p>
+                As the flagship model of the brand, the Phantom represents the absolute pinnacle of automotive
+                luxury, scale, and status. It is famous for its legendary "Magic Carpet Ride"—an air suspension
+                system that actively scans the road to isolate passengers from any bumps. The vibrant two-tone paint
+                job on this specific car highlights the limitless bespoke customization options available to buyers.
+            </p>
+            <a href="phantom.html">Learn More</a>
+        </div>
+        <div class="card fade-in">
+            <img src="card1.jpg" alt="Rolls-Royce Ghost" loading="lazy">
+            <h3>Rolls-Royce Ghost (Brown)</h3>
+            <p>
+                The Ghost is designed to be the more dynamic, driver-focused model in the Rolls-Royce lineup. While it
+                still offers exceptional rear-seat luxury, it is built on a slightly smaller platform than the Phantom,
+                making it more agile for daily driving. It features a powerful V12 engine, all-wheel drive, and an
+                advanced suspension system engineered to provide a smooth yet responsive ride.
+            </p>
+            <a href="ghost.html">Learn More</a>
+        </div>
+    </section>
+
+
+    <section id="about">
+        <img src="logo.jpg" alt="Rolls-Royce Logo">
+        <div class="about-content">
+            <h2>About Rolls-Royce</h2>
+            <p>
+                Rolls-Royce Motor Cars is the ultimate global symbol of automotive luxury and handcrafted British
+                excellence, operating today out of its iconic headquarters in Goodwood, England, as a subsidiary of the BMW
+                Group. Founded in 1904 by Charles Rolls and Henry Royce, the marque is defined by legendary innovations like
+                its ultra-quiet "Magic Carpet Ride" suspension, the iconic retracting Spirit of Ecstasy hood ornament, and
+                custom Bespoke options like the fiber-optic Starlight Headliner. From the commanding presence of its
+                flagship Phantom sedan and the rugged luxury of the Cullinan SUV, to its groundbreaking new all-electric
+                Spectre super-coupé, every vehicle is custom-tailored to offer unmatched presence, near-silent performance,
+                and the absolute pinnacle of elite status on the road. </p>
+        </div>
+    </section>
+
+    <section id="testimonials">
+        <h2>Client Testimonials</h2>
+        <div class="testimonials-container">
+            <div class="testimonial-card fade-in">
+                <div class="testimonial-stars">★★★★★</div>
+                <div class="testimonial-text">"An absolutely magnificent driving experience. The attention to detail is unparalleled, and the craftsmanship is simply extraordinary."</div>
+                <div class="testimonial-author">- James Anderson, CEO</div>
+            </div>
+            <div class="testimonial-card fade-in">
+                <div class="testimonial-stars">★★★★★</div>
+                <div class="testimonial-text">"Rolls-Royce has redefined luxury. Every moment behind the wheel feels like a privilege reserved for the elite."</div>
+                <div class="testimonial-author">- Victoria Sterling, Entrepreneur</div>
+            </div>
+            <div class="testimonial-card fade-in">
+                <div class="testimonial-stars">★★★★★</div>
+                <div class="testimonial-text">"The pinnacle of automotive excellence. From engineering to aesthetics, nothing compares to the Rolls-Royce experience."</div>
+                <div class="testimonial-author">- Michael Chen, Connoisseur</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <p>For inquiries, please reach out to us</p>
+        <form action="https://formspree.io/f/mkoallgj" method="post">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <footer>
+        <div class="social-links">
+            <a href="https://facebook.com" title="Facebook" target="_blank">f</a>
+            <a href="https://twitter.com" title="Twitter" target="_blank">𝕏</a>
+            <a href="https://instagram.com" title="Instagram" target="_blank">📷</a>
+            <a href="https://linkedin.com" title="LinkedIn" target="_blank">in</a>
+        </div>
+        <p>&copy; 2024 Rolls-Royce Motor Cars. All rights reserved.</p>
+        <p>Designed and developed with excellence in mind.</p>
+    </footer>
+
+    <button class="back-to-top" id="backToTop">↑</button>
+
+    <script>
+        // ====== HAMBURGER MENU ======
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        navMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // ====== SMOOTH SCROLL OFFSET ======
+        document.documentElement.style.scrollPaddingTop = '70px';
+
+        // ====== BACK TO TOP BUTTON ======
+        const backToTopBtn = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // ====== SCROLL ANIMATIONS (INTERSECTION OBSERVER) ======
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // ====== FORM LOADING ANIMATION ======
+        const contactForm = document.querySelector('#contact form');
+        contactForm.addEventListener('submit', (e) => {
+            const btn = contactForm.querySelector('button');
+            btn.classList.add('submitting');
+            btn.disabled = true;
+            btn.textContent = 'Sending...';
+        });
+
+        // ====== LAZY LOADING IMAGES ======
+        const images = document.querySelectorAll('img[loading="lazy"]');
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.src;
+                        observer.unobserve(img);
+                    }
+                });
+            });
+
+            images.forEach(img => imageObserver.observe(img));
+        }
+    </script>
+
+</html>
